@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import { FaEdit } from "react-icons/fa";
 import axios from "axios";
 
-function EditAnimal({ animal, onEdit, handleEdit }) {
+function EditAnimal({ animal, onEdit, handleEdit, imageUrl }) {
   const [show, setShow] = useState(false);
   const [name, setName] = useState(animal.name);
   const [species, setSpecies] = useState(animal.species);
@@ -19,27 +19,40 @@ function EditAnimal({ animal, onEdit, handleEdit }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-    axios.put(`http://localhost:3001/animals/${animal.id}`, {
-      name,
-      species,
-      age,
-      adopted,
-      description,
-      image,
-      chip,
-      lastViewed,
-    })
-    .then(response => {
-      const updatedAnimal = response.data;
-      handleEdit(updatedAnimal);
-      onEdit(null);
-      handleClose()
-    })
-    .catch(error => {
-      console.log(error);
-    });
+    axios
+      .put(`http://localhost:3001/animals/${animal.id}`, {
+        name,
+        species,
+        age,
+        adopted,
+        description,
+        image,
+        chip,
+        lastViewed,
+      })
+      .then((response) => {
+        const updatedAnimal = response.data;
+        handleEdit(updatedAnimal);
+        onEdit(null);
+        handleClose();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
-  
+
+  useEffect(() => {
+    setImage(imageUrl);
+  }, [imageUrl]);
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
+  };
 
   return (
     <>
@@ -94,14 +107,14 @@ function EditAnimal({ animal, onEdit, handleEdit }) {
             <Form.Group controlId="formAdopted">
               <Form.Check
                 type="checkbox"
-                label="Adoption status"
+                label="Adopted"
                 checked={adopted}
                 onChange={(e) => setAdopted(e.target.checked)}
               />
             </Form.Group>
 
             <Form.Group controlId="formDescription">
-              <Form.Label>Note</Form.Label>
+              <Form.Label>Description</Form.Label>
               <Form.Control
                 as="textarea"
                 placeholder="Enter description"
@@ -115,15 +128,26 @@ function EditAnimal({ animal, onEdit, handleEdit }) {
               <Form.Control
                 type="text"
                 placeholder="Enter image URL"
-                value={image}
+                value={image || imageUrl}
                 onChange={(e) => setImage(e.target.value)}
+              />
+              {image && (
+                <div>
+                  <img src={image} alt="animal" width="200" height="200" />
+                </div>
+              )}
+              <Form.Label>or choose a file</Form.Label>
+              <Form.Control
+                type="file"
+                accept=".jpg,.png,.jpeg"
+                onChange={(e) => handleImageUpload(e)}
               />
             </Form.Group>
 
             <Form.Group controlId="formChip">
               <Form.Check
                 type="checkbox"
-                label="Chip"
+                label="Chipped"
                 checked={chip}
                 onChange={(e) => setChip(e.target.value)}
               />

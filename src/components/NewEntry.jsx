@@ -12,7 +12,6 @@ const NewEntry = () => {
   const [chip, setChip] = useState(false);
   const [lastViewed, setLastViewed] = useState("");
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post("http://localhost:3001/animals", {
@@ -23,7 +22,7 @@ const NewEntry = () => {
       image,
       description,
       chip,
-      lastViewed
+      lastViewed,
     });
     setName("");
     setSpecies("");
@@ -32,6 +31,15 @@ const NewEntry = () => {
     setDescription("");
     setChip("");
     setLastViewed("");
+  };
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () => {
+      setImage(reader.result);
+    };
   };
 
   return (
@@ -79,7 +87,7 @@ const NewEntry = () => {
           type="checkbox"
           label="Adoption status"
           checked={adopted}
-          onChange={(e) =>setAdopted(e.target.checked)}
+          onChange={(e) => setAdopted(e.target.checked)}
         />
       </Form.Group>
 
@@ -101,6 +109,17 @@ const NewEntry = () => {
           value={image}
           onChange={(e) => setImage(e.target.value)}
         />
+        {image && (
+          <div>
+            <img src={image} alt="animal" width="200" height="200" />
+          </div>
+        )}
+        <Form.Label>or choose a file</Form.Label>
+         <Form.Control
+                type="file"
+                accept=".jpg,.png,.jpeg"
+                onChange={(e) => handleImageUpload(e)}
+              />
       </Form.Group>
 
       <Form.Group controlId="formChip">

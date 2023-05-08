@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Table, Button, Form, Row } from "react-bootstrap";
+import { Card, CardGroup, Button, Form, Row} from "react-bootstrap";
 import axios from "axios";
 import { FaTrash } from "react-icons/fa";
 import { useContext } from "react";
 import { UserContext } from "../context/UserContext";
 import EditAnimal from "./EditAnimal";
+import "../App.css";
 
 function AnimalsList() {
   const [animals, setAnimals] = useState([]);
@@ -139,60 +140,43 @@ function AnimalsList() {
           </Form.Group>
         </Row>
       </Form>
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Species</th>
-            <th>Age</th>
-            <th>Adoption Status</th>
-            <th>Image</th>
-            <th>Description</th>
-            <th>Chip status</th>
-            <th>Last Viewed</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {filteredItems.map((item) => (
-            <tr key={item.id}>
-              <td>{item.name}</td>
-              <td>{item.species}</td>
-              <td>{item.age}</td>
-              <td>{item.adopted ? "Adopted" : "Not Adopted"}</td>
-              <td>{item.image}</td>
-              <td>{item.description}</td>
-              <td>{item.chip ? "Chipped" : "Not chipped"}</td>
-              <td>{item.lastViewed}</td>
-              <td>
-                {isAdmin && (
-                  <EditAnimal
-                    animal={item}
-                    onEdit={setEdit}
-                    handleEdit={handleEdit}
-                  />
-                )}{" "}
-                {isAdmin && (
-                  <Button
-                    variant="danger"
-                    onClick={() => handleDelete(item.id)}
-                  >
-                    <FaTrash />
-                  </Button>
-                )}{" "}
-                {!item.adopted && (
-                  <Button
-                    variant="success"
-                    onClick={() => handleAdopt(item.id)}
-                  >
-                    Adopt
-                  </Button>
-                )}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+      <CardGroup className="card-container">
+  {filteredItems.map((item) => (
+    <Card key={item.id}>
+      <Card.Img variant="top" src={item.image} />
+      <Card.Body>
+        <Card.Title>{item.name}</Card.Title>
+        <Card.Text>
+          Species: {item.species} <br />
+          Age: {item.age} <br />
+          Description: {item.description} <br />
+          Chip Status: {item.chip ? "Chipped" : "Not chipped"} <br />
+          Last Viewed: {item.lastViewed} <br />
+          Adoption Status: {item.adopted ? "Adopted" : "Not Adopted"} <br />
+        </Card.Text>
+      </Card.Body>
+      <Card.Footer>
+        <Button variant="success" disabled={item.adopted} onClick={() => handleAdopt(item.id)}>
+          Adopt
+        </Button>{" "}
+        {isAdmin && (
+          <EditAnimal
+            animal={item}
+            onEdit={setEdit}
+            handleEdit={handleEdit}
+            imageUrl={item.image}
+          />
+        )}
+        {isAdmin && (
+          <Button variant="danger" onClick={() => handleDelete(item.id)}>
+            <FaTrash />
+          </Button>
+        )}
+      </Card.Footer>
+    </Card>
+  ))}
+</CardGroup>
+
     </>
   );
 }

@@ -40,47 +40,103 @@
   ],
   "animals": [
     {
-      "name": "Snoop",
+      "name": "Bordie",
       "species": "dog",
       "age": "4",
-      "adopted": true,
-      "description": "something about",
-      "image": "",
-      "chip": true,
-      "lastViewed": "2023-05-25",
-      "id": 2
+      "adopted": false,
+      "description": "nice border collie",
+      "image": "https://img.freepik.com/free-photo/endearing-black-white-dog-with-sad-face-expression_181624-53279.jpg?w=900&t=st=1683549739~exp=1683550339~hmac=a51d798b0776e12d8d9b85bf467e43b103a1d5d9686d14459d2a74527aecb787",
+      "chip": "on",
+      "lastViewed": "2023-05-02",
+      "id": 8
     },
     {
-      "name": "Garfield",
-      "species": "cat",
+      "name": "Medo",
+      "species": "dog",
       "age": "3",
       "adopted": false,
-      "description": "cartoon cat",
-      "image": "",
-      "chip": false,
-      "lastViewed": "2023-05-03",
-      "id": 3
+      "description": "",
+      "image": "https://img.freepik.com/free-photo/shih-tzu-dog-relaxing-sofa-living-room_637285-4652.jpg?w=900&t=st=1683549173~exp=1683549773~hmac=e626bde1129f8e4f4b8cdd8d657490e10a2464a9558cedd66d499abd05ca0a0e",
+      "chip": "on",
+      "lastViewed": "",
+      "id": 10
     },
     {
-      "name": "Snoopy",
+      "name": "Hampy",
+      "species": "hamster",
+      "age": "2",
+      "adopted": false,
+      "description": "warm and friendly hamster",
+      "image": "https://img.freepik.com/free-photo/european-hamster-flowering-meadow_475641-316.jpg?w=900&t=st=1683556066~exp=1683556666~hmac=76786ffb1c0112171a78d2854b5b05901d3c2407d7e9f0ca0a76a02682ad2327",
+      "chip": "on",
+      "lastViewed": "2023-05-02",
+      "id": 12
+    },
+    {
+      "name": "Bobi",
       "species": "dog",
       "age": "",
       "adopted": false,
-      "description": "sooooop",
-      "image": "",
-      "chip": "on",
-      "lastViewed": "2023-05-18",
-      "id": 4
+      "description": "",
+      "image": "https://img.freepik.com/free-photo/friendly-smart-basenji-dog-giving-his-paw-close-up-isolated-white_346278-1626.jpg?w=900&t=st=1683543568~exp=1683544168~hmac=da24d06ccd4318896f2b8adde3cbbd7d73f965b71b6f818319fd24b3e54e1a57",
+      "chip": false,
+      "lastViewed": "",
+      "id": 13
     },
     {
-      "id": 5,
-      "name": "Birdie",
-      "species": "bird",
+      "name": "kitty",
+      "species": "cat",
+      "age": "5",
+      "adopted": true,
+      "image": "https://img.freepik.com/free-photo/white-cat-lies-woman-s-knees_8353-539.jpg?w=900&t=st=1683550893~exp=1683551493~hmac=54f0367bf580f9f7fcdf649bc772fb6538884cf144528f5b3ee5cd5dfc0943af",
+      "description": "beautiful kitty ",
+      "chip": "on",
+      "lastViewed": "2023-05-01",
+      "id": 14
+    },
+    {
+      "name": "Mica",
+      "species": "cat",
+      "age": "4",
+      "adopted": "",
+      "image": "https://img.freepik.com/free-photo/domestic-kitten-cute-fluffy-looking-camera-generative-ai_188544-8450.jpg?w=996&t=st=1683550990~exp=1683551590~hmac=aa9e7197472d376f000fa332bd70117f43cd112aa979a62e41515b9ae82ae620",
+      "description": "nice persian cat",
+      "chip": "on",
+      "lastViewed": "2023-02-08",
+      "id": 15
+    },
+    {
+      "name": "Tom",
+      "species": "cat",
+      "age": "12",
+      "adopted": false,
+      "description": "stray cat",
+      "image": "https://img.freepik.com/premium-photo/stray-cat-s-jealous-other-cats_751447-120.jpg?w=1060",
       "chip": false,
-      "age": 44,
-      "description": "Loves worms",
-      "lastViewed": "2022-09-23",
-      "adopted": true
+      "lastViewed": "2023-02-16",
+      "id": 16
+    },
+    {
+      "name": "Bobi",
+      "species": "cat",
+      "age": "4",
+      "adopted": false,
+      "description": "",
+      "image": "https://img.freepik.com/free-photo/cute-ginger-maine-coon-kitten-is-lying-special-cat-s-furniture_613910-20322.jpg?w=900&t=st=1683551269~exp=1683551869~hmac=09c4c7e5f44760fe3882e73c8e84910c8e62081d9a6da27efcbd201a3e0c68b6",
+      "chip": false,
+      "lastViewed": "",
+      "id": 17
+    },
+    {
+      "name": "Jackie",
+      "species": "bird",
+      "age": "",
+      "adopted": false,
+      "description": "",
+      "image": "https://img.freepik.com/free-photo/beautiful-european-robin-standing-moss-covered-branch-tree_181624-23992.jpg?w=900&t=st=1683555659~exp=1683556259~hmac=cd649f39697b1e518c0cbf74b65937f6694b3e45797ad4dd974d8ba1f988a0b5",
+      "chip": false,
+      "lastViewed": "",
+      "id": 19
     }
   ]
 }
