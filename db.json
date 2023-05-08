@@ -1,0 +1,86 @@
+{
+  "announcements": [
+    {
+      "id": 1,
+      "title": "Grand Opening",
+      "date": "2023-04-17",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus mauris metus, vulputate vulputate neque blandit quis. Nunc ultrices diam ligula, nec commodo purus ullamcorper id. Donec aliquet libero eu tincidunt eleifend. Duis ornare tincidunt nisl quis fringilla. Curabitur bibendum metus mauris, in bibendum lectus vestibulum tristique. Sed in nibh facilisis tortor varius euismod at et lectus. In non congue elit. Donec blandit est consequat, porta tellus eu, placerat odio.",
+      "important": true
+    },
+    {
+      "id": 2,
+      "title": "International Cat Day",
+      "date": "2023-02-17",
+      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus mauris metus, vulputate vulputate neque blandit quis. Nunc ultrices diam ligula, nec commodo purus ullamcorper id. Donec aliquet libero eu tincidunt eleifend. Duis ornare tincidunt nisl quis fringilla. Curabitur bibendum metus mauris, in bibendum lectus vestibulum tristique. Sed in nibh facilisis tortor varius euismod at et lectus. In non congue elit. Donec blandit est consequat, porta tellus eu, placerat odio.",
+      "important": false
+    }
+  ],
+  "donations": [
+    {
+      "id": 1,
+      "category": "donated",
+      "type": "Food",
+      "value": 25,
+      "description": "Dry food for dogs - 10kg"
+    },
+    {
+      "id": 2,
+      "category": "requested",
+      "type": "Toys",
+      "value": 15,
+      "description": "Scratching post for cats"
+    },
+    {
+      "id": 3,
+      "category": "offered",
+      "type": "Other",
+      "value": 25,
+      "description": "Cage for medium-sized parrots"
+    }
+  ],
+  "animals": [
+    {
+      "name": "Snoop",
+      "species": "dog",
+      "age": "4",
+      "adopted": true,
+      "description": "something about",
+      "image": "",
+      "chip": true,
+      "lastViewed": "2023-05-25",
+      "id": 2
+    },
+    {
+      "name": "Garfield",
+      "species": "cat",
+      "age": "3",
+      "adopted": false,
+      "description": "cartoon cat",
+      "image": "",
+      "chip": false,
+      "lastViewed": "2023-05-03",
+      "id": 3
+    },
+    {
+      "name": "Snoopy",
+      "species": "dog",
+      "age": "",
+      "adopted": false,
+      "description": "sooooop",
+      "image": "",
+      "chip": "on",
+      "lastViewed": "2023-05-18",
+      "id": 4
+    },
+    {
+      "id": 5,
+      "name": "Birdie",
+      "species": "bird",
+      "chip": false,
+      "age": 44,
+      "description": "Loves worms",
+      "lastViewed": "2022-09-23",
+      "adopted": true
+    }
+  ]
+}
