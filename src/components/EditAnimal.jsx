@@ -56,7 +56,7 @@ function EditAnimal({ animal, onEdit, handleEdit, imageUrl }) {
 
   return (
     <>
-      <Button variant="info" onClick={handleShow}>
+      <Button style={{margin:"5px"}} variant="info" onClick={handleShow}>
         <FaEdit />
       </Button>
 

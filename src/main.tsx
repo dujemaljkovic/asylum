@@ -5,7 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AboutUs from "./components/AboutUs";
 import AnimalsList from "./components/AnimalsList";
-import Donations from "./components/Donations";
+import Donations from "./components/Donations/DonationsList";
 import Announcements from "./components/Announcements";
 import NewEntry from "./components/NewEntry";
 import Navigation from "./components/Navigation";

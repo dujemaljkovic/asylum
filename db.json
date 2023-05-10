@@ -17,25 +17,81 @@
   ],
   "donations": [
     {
-      "id": 1,
+      "category": "offers",
+      "type": "T-Shirt",
+      "amount": "3",
+      "description": "dasd",
+      "id": "7WwcYiF"
+    },
+    {
       "category": "donated",
-      "type": "Food",
-      "value": 25,
-      "description": "Dry food for dogs - 10kg"
+      "type": "T-Shirt",
+      "amount": "23",
+      "description": "adasda",
+      "id": "dXC-3mU"
     },
     {
-      "id": 2,
-      "category": "requested",
-      "type": "Toys",
-      "value": 15,
-      "description": "Scratching post for cats"
+      "category": "donated",
+      "type": "vxcvx",
+      "amount": "25",
+      "description": "dedeeedd",
+      "id": "RogmHFT"
     },
     {
-      "id": 3,
-      "category": "offered",
-      "type": "Other",
-      "value": 25,
-      "description": "Cage for medium-sized parrots"
+      "category": "offers",
+      "type": "offers",
+      "amount": "23",
+      "description": "offers",
+      "id": "f1efNaA"
+    },
+    {
+      "category": "donated",
+      "type": "T-Shirt",
+      "amount": "25",
+      "description": "donated",
+      "id": "wk9Qz3U"
+    },
+    {
+      "category": "donated",
+      "type": "T-Shirt",
+      "amount": "23",
+      "description": "dasda",
+      "id": "nS410fA"
+    },
+    {
+      "category": "offers",
+      "type": "gfdfgd",
+      "amount": "gdfgd",
+      "description": "gdf",
+      "id": "EsNwFUq"
+    },
+    {
+      "id": "15zSleu",
+      "category": "donated",
+      "type": "T-Shirt",
+      "amount": "25",
+      "description": "dasdasd"
+    },
+    {
+      "id": "iOPtSf3",
+      "category": "donated",
+      "type": "T-Shirt",
+      "amount": "23",
+      "description": "dddd"
+    },
+    {
+      "id": "_cbiCBW",
+      "category": "looking_for",
+      "type": "T-Shirt",
+      "amount": "5",
+      "description": "asda"
+    },
+    {
+      "id": "1lqAbnW",
+      "category": "looking_for",
+      "type": "T-Shirt",
+      "amount": "23",
+      "description": "adasd"
     }
   ],
   "animals": [
@@ -53,45 +109,45 @@
     {
       "name": "Medo",
       "species": "dog",
-      "age": "3",
+      "age": "",
       "adopted": false,
       "description": "",
       "image": "https://img.freepik.com/free-photo/shih-tzu-dog-relaxing-sofa-living-room_637285-4652.jpg?w=900&t=st=1683549173~exp=1683549773~hmac=e626bde1129f8e4f4b8cdd8d657490e10a2464a9558cedd66d499abd05ca0a0e",
-      "chip": "on",
+      "chip": false,
       "lastViewed": "",
       "id": 10
     },
     {
       "name": "Hampy",
       "species": "hamster",
-      "age": "2",
+      "age": "1",
       "adopted": false,
-      "description": "warm and friendly hamster",
+      "description": "",
       "image": "https://img.freepik.com/free-photo/european-hamster-flowering-meadow_475641-316.jpg?w=900&t=st=1683556066~exp=1683556666~hmac=76786ffb1c0112171a78d2854b5b05901d3c2407d7e9f0ca0a76a02682ad2327",
-      "chip": "on",
-      "lastViewed": "2023-05-02",
+      "chip": false,
+      "lastViewed": "",
       "id": 12
     },
     {
       "name": "Bobi",
       "species": "dog",
-      "age": "",
+      "age": "5",
       "adopted": false,
-      "description": "",
+      "description": "smart basenji, he doesn't bark",
       "image": "https://img.freepik.com/free-photo/friendly-smart-basenji-dog-giving-his-paw-close-up-isolated-white_346278-1626.jpg?w=900&t=st=1683543568~exp=1683544168~hmac=da24d06ccd4318896f2b8adde3cbbd7d73f965b71b6f818319fd24b3e54e1a57",
       "chip": false,
       "lastViewed": "",
       "id": 13
     },
     {
-      "name": "kitty",
+      "name": "Kitty",
       "species": "cat",
-      "age": "5",
-      "adopted": true,
+      "age": "3",
+      "adopted": false,
+      "description": "black and white kitty cat",
       "image": "https://img.freepik.com/free-photo/white-cat-lies-woman-s-knees_8353-539.jpg?w=900&t=st=1683550893~exp=1683551493~hmac=54f0367bf580f9f7fcdf649bc772fb6538884cf144528f5b3ee5cd5dfc0943af",
-      "description": "beautiful kitty ",
       "chip": "on",
-      "lastViewed": "2023-05-01",
+      "lastViewed": "2023-03-08",
       "id": 14
     },
     {
@@ -137,6 +193,39 @@
       "chip": false,
       "lastViewed": "",
       "id": 19
+    },
+    {
+      "name": "Bela",
+      "species": "dog",
+      "age": "6",
+      "adopted": false,
+      "image": "https://img.freepik.com/free-photo/irish-setter_1398-4793.jpg?w=826&t=st=1683572182~exp=1683572782~hmac=eb4e2d462bbbd092626cc1e21d76045516e599643e5c739fc144b986932aa80d",
+      "description": "cute irsh setter",
+      "chip": "on",
+      "lastViewed": "2023-05-03",
+      "id": 20
+    },
+    {
+      "name": "Ricky",
+      "species": "bird",
+      "age": "4",
+      "adopted": false,
+      "description": "",
+      "image": "https://img.freepik.com/free-photo/macau-parrot_1339-3387.jpg?w=900&t=st=1683615732~exp=1683616332~hmac=9dbe37a6b352b4c0389e6350a60bb9baa35a329fc6f1185e991c4850550c638e",
+      "chip": false,
+      "lastViewed": "2023-05-20",
+      "id": 21
+    },
+    {
+      "name": "Rob",
+      "species": "hamster",
+      "age": "1",
+      "adopted": false,
+      "image": "https://img.freepik.com/free-photo/beautiful-guinea-pig-pet-portrait_23-2149152070.jpg?w=900&t=st=1683622361~exp=1683622961~hmac=190e1b3667a314403801874127f33fb2cebc9497be3312cc5ec7ab5ba2a6a5e9",
+      "description": "fat hamster",
+      "chip": "on",
+      "lastViewed": "2023-05-06",
+      "id": 22
     }
   ]
 }
