@@ -1,41 +1,76 @@
 {
   "announcements": [
     {
-      "id": 1,
-      "title": "Grand Opening",
-      "date": "2023-04-17",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus mauris metus, vulputate vulputate neque blandit quis. Nunc ultrices diam ligula, nec commodo purus ullamcorper id. Donec aliquet libero eu tincidunt eleifend. Duis ornare tincidunt nisl quis fringilla. Curabitur bibendum metus mauris, in bibendum lectus vestibulum tristique. Sed in nibh facilisis tortor varius euismod at et lectus. In non congue elit. Donec blandit est consequat, porta tellus eu, placerat odio.",
-      "important": true
+      "title": "Volunteers needed for dog walking",
+      "text": "Our shelter is in need of volunteers to help walk our dogs on a daily basis. If you love spending time with furry friends and have some spare time, please consider joining our team of volunteers!",
+      "important": false,
+      "addedAt": "2023-05-11",
+      "id": 5
     },
     {
-      "id": 2,
-      "title": "International Cat Day",
-      "date": "2023-02-17",
-      "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras faucibus mauris metus, vulputate vulputate neque blandit quis. Nunc ultrices diam ligula, nec commodo purus ullamcorper id. Donec aliquet libero eu tincidunt eleifend. Duis ornare tincidunt nisl quis fringilla. Curabitur bibendum metus mauris, in bibendum lectus vestibulum tristique. Sed in nibh facilisis tortor varius euismod at et lectus. In non congue elit. Donec blandit est consequat, porta tellus eu, placerat odio.",
-      "important": false
+      "title": "Foster families needed for puppies!",
+      "text": "We have a litter of adorable puppies that need temporary foster homes until they are old enough to be adopted. If you are interested in fostering one of these little cuties, please get in touch with us",
+      "important": false,
+      "addedAt": "2023-05-11",
+      "id": 6
+    },
+    {
+      "title": "Lost dog in the area",
+      "text": "A friendly and well-behaved dog was spotted in the area. If you know anything about this dog or have seen it around, please contact us as soon as possible so we can reunite it with its owner",
+      "important": true,
+      "addedAt": "2023-05-11",
+      "id": 7
+    },
+    {
+      "title": "Urgent adoption needed!!!",
+      "text": "We have a lovely 3-month-old kitten that urgently needs a new home. She is playful, healthy, and up-to-date on all her vaccinations. Please consider adopting her and giving her a forever home!",
+      "important": true,
+      "addedAt": "2023-05-11",
+      "id": 8
     }
   ],
   "donations": [
     {
-      "id": 2,
-      "category": "offers",
-      "type": "vxcvx",
-      "amount": "",
-      "description": ""
+      "category": "looking_for",
+      "type": "Medicine",
+      "amount": "22.50",
+      "description": "Box of antibiotics for cats and dogs",
+      "id": 2
     },
     {
-      "category": "donated",
-      "type": "T-Shirt",
-      "amount": "3",
-      "description": "ew",
+      "category": "offers",
+      "type": "Toys",
+      "amount": "30",
+      "description": "Assortment of plush toys for dogs and cats",
       "id": 3
+    },
+    {
+      "category": "looking_for",
+      "type": "vet. costs",
+      "amount": "120",
+      "description": "Routine check-up and vaccinations for two cats",
+      "id": 4
     },
     {
       "id": 5,
       "category": "donated",
-      "type": "T-Shirt",
-      "amount": "dasdas",
-      "description": "dasda"
+      "type": "grooming",
+      "amount": "25",
+      "description": "Bath and haircut for a medium-sized dog"
+    },
+    {
+      "category": "offers",
+      "type": "blankets",
+      "amount": "15",
+      "description": "Assortment of cozy blankets for cats and dogs",
+      "id": 6
+    },
+    {
+      "category": "donated",
+      "type": "vet. costs",
+      "amount": "350",
+      "description": "Spay surgery for a female dog",
+      "id": 7
     }
   ],
   "animals": [

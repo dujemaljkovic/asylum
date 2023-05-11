@@ -1,39 +1,172 @@
-const Announcements = () => {
-  return (
-    <>
-      <h2>Announcements</h2>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Consequuntur
-        dignissimos eum veniam ipsam similique iste voluptatibus, obcaecati
-        molestiae cupiditate numquam cum in reprehenderit accusamus omnis
-        exercitationem. Eos fuga perspiciatis rem assumenda delectus mollitia
-        fugit. Minus corporis eius praesentium perferendis delectus earum, sequi
-        soluta tenetur debitis impedit sed similique aut? Ipsam tenetur nobis
-        esse quam facere at autem dolore delectus totam saepe laboriosam, iste
-        corrupti reprehenderit est nemo magni placeat! Esse molestiae soluta
-        optio iste commodi repudiandae odio dolorem aspernatur, suscipit,
-        doloribus ea enim. Nihil ab a itaque numquam similique iusto porro
-        consequatur omnis quidem sit vitae rerum ducimus accusantium, ipsam
-        saepe, voluptatem veritatis consectetur repellendus hic praesentium
-        aperiam eaque? Accusamus blanditiis porro asperiores minus inventore
-        illum natus, voluptatibus atque voluptatum voluptatem a suscipit
-        possimus, laudantium qui corrupti minima rerum eveniet ducimus quidem.
-        Amet, dolorum! Voluptates quaerat saepe quis itaque repellendus ex
-        nulla, quo in quos minus consequatur, rem suscipit ea? Deleniti
-        exercitationem maiores, sed deserunt nobis iusto cum sunt saepe, porro
-        adipisci nostrum ipsam obcaecati consequatur ea alias velit tenetur
-        molestiae nam, rerum delectus earum debitis pariatur distinctio neque.
-        Facilis autem velit, adipisci temporibus sunt, sed ab modi fugiat quod
-        nobis sit debitis harum laudantium. Illo aliquid obcaecati inventore
-        laborum cumque. Earum voluptas quis unde cupiditate explicabo, magnam
-        dicta voluptatem delectus quaerat nostrum dolorum quisquam consequatur
-        aperiam dolores veniam tempora, minima corrupti deserunt, ullam cumque
-        deleniti adipisci. Libero sunt est adipisci dicta quaerat et. Provident
-        illum, voluptatibus delectus inventore mollitia accusamus possimus et!
-        Saepe, cupiditate perspiciatis! Mollitia voluptate ad vitae.
-      </p>
-    </>
-  );
-};
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import {
+  Container,
+  Card,
+  Form,
+  Button,
+  ListGroup,
+  Modal,
+} from "react-bootstrap";
+import { FaEdit, FaTrash } from "react-icons/fa";
+import { useContext } from "react";
+import { UserContext } from "../context/UserContext";
 
-export default Announcements;
+function Notifications() {
+  const [showModal, setShowModal] = useState(false);
+  const [notifications, setNotifications] = useState([]);
+  const [newNotification, setNewNotification] = useState({
+    title: "",
+    text: "",
+    important: false,
+  });
+
+  const { isAdmin } = useContext(UserContext);
+
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth() + 1;
+  const day = today.getDate();
+
+  const formattedDate = `${year}-${month < 10 ? "0" : ""}${month}-${
+    day < 10 ? "0" : ""
+  }${day}`;
+
+  useEffect(() => {
+    axios.get("http://localhost:3001/announcements").then((response) => {
+      setNotifications(response.data);
+    });
+  }, []);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setNewNotification((prevState) => ({
+      ...prevState,
+      [name]: value,
+    }));
+  };
+
+  const handleImportantChange = (event) => {
+    const { checked } = event.target;
+    setNewNotification((prevState) => ({
+      ...prevState,
+      important: checked,
+    }));
+  };
+
+  const handleAddNotification = (event) => {
+    event.preventDefault();
+    const currentDate = formattedDate;
+    const notificationToAdd = { ...newNotification, addedAt: currentDate };
+    axios
+      .post("http://localhost:3001/announcements", notificationToAdd)
+      .then((response) => {
+        setNotifications((prevState) => [response.data, ...prevState]);
+        setNewNotification({ title: "", text: "", important: false });
+        setShowModal(false);
+      });
+  };
+
+  const handleUpdateNotification = (id, updatedNotification) => {
+    axios
+      .put(`http://localhost:3001/announcements/${id}`, updatedNotification)
+      .then((response) => {
+        setNotifications((prevState) =>
+          prevState.map((notification) =>
+            notification.id === id ? response.data : notification
+          )
+        );
+      });
+  };
+
+  const handleDeleteNotification = (id) => {
+    axios.delete(`http://localhost:3001/announcements/${id}`).then(() => {
+      setNotifications((prevState) =>
+        prevState.filter((notification) => notification.id !== id)
+      );
+    });
+  };
+
+  const sortedNotifications = [...notifications].sort(
+    (a, b) => b.addedAt - a.addedAt
+  );
+
+  return (
+    <Container>
+      <Button onClick={() => setShowModal(true)}>Add Notification</Button>
+      <Modal show={showModal} onHide={() => setShowModal(false)}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add Notification</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form onSubmit={handleAddNotification}>
+            <Form.Group controlId="formTitle">
+              <Form.Label>Title:</Form.Label>
+              <Form.Control
+                type="text"
+                name="title"
+                value={newNotification.title}
+                onChange={handleInputChange}
+                maxLength={40}
+                required
+              />
+            </Form.Group>
+            <Form.Group controlId="formText">
+              <Form.Label>Text:</Form.Label>
+              <Form.Control
+                as="textarea"
+                rows={3}
+                name="text"
+                value={newNotification.text}
+                onChange={handleInputChange}
+                minLength={10}
+                maxLength={250}
+                required
+              />
+            </Form.Group>
+            <Form.Group controlId="formImportant">
+             {isAdmin && <Form.Check
+                type="checkbox"
+                name="important"
+                checked={newNotification.important}
+                onChange={handleImportantChange}
+                label="Important"
+              />}
+            </Form.Group>
+            <Button type="submit">Add Notification</Button>
+          </Form>
+        </Modal.Body>
+      </Modal>
+      <ListGroup>
+        {sortedNotifications.map((notification) => (
+          <Card
+            key={notification.id}
+            border={notification.important ? "danger" : "success"}
+            style={{ marginTop: "20px" }}
+          >
+            <Card.Body>
+              <Card.Header>
+                <Card.Title>{notification.title}</Card.Title>
+              </Card.Header>
+              <Card.Text>{notification.text}</Card.Text>
+              <Card.Footer className="text-muted">
+                Added at: {notification.addedAt}
+                {isAdmin && (
+                  <Button
+                    variant="danger"
+                    onClick={() => handleDeleteNotification(notification.id)}
+                  >
+                    <FaTrash />
+                  </Button>
+                )}
+             
+              </Card.Footer>
+            </Card.Body>
+          </Card>
+        ))}
+      </ListGroup>
+    </Container>
+  );
+}
+
+export default Notifications;

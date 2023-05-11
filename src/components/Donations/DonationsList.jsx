@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
-import { Button, Modal, Form} from "react-bootstrap";
+import { Button, Modal, Form } from "react-bootstrap";
 import axios from "axios";
 import DonationTable from "../Donations/DonationTable";
+import { useContext } from "react";
+import { UserContext } from "../../context/UserContext";
 
 function DonationsList() {
   const [donations, setDonations] = useState([]);
@@ -14,6 +16,8 @@ function DonationsList() {
     description: "",
   });
 
+  const { isAdmin } = useContext(UserContext);
+
   const load = async () => {
     try {
       const response = await axios.get("http://localhost:3001/donations");
@@ -24,7 +28,7 @@ function DonationsList() {
   };
 
   useEffect(() => {
-    load()
+    load();
   }, [newDonation]);
 
   const handleCloseModal = () => setShowModal(false);
@@ -39,7 +43,10 @@ function DonationsList() {
 
   const changeCategory = async (id, category) => {
     try {
-      const response = await axios.patch(`http://localhost:3001/donations/${id}`, { category });
+      const response = await axios.patch(
+        `http://localhost:3001/donations/${id}`,
+        { category }
+      );
       if (response.status === 200) {
         load(); // assuming there's a load function that reloads the donations list
       }
@@ -47,16 +54,14 @@ function DonationsList() {
       console.error(error);
     }
   };
-  
+
   const handleMarkAsDonated = (donationId) => {
     changeCategory(donationId, "donated");
   };
-  
+
   const handleOnRepeat = (donationId) => {
     changeCategory(donationId, "looking_for");
   };
-  
-  
 
   const handleDelete = (donationId) => {
     axios.delete(`http://localhost:3001/donations/${donationId}`).then(() => {
@@ -67,11 +72,8 @@ function DonationsList() {
     });
   };
 
-  
-
   const donationsByCategory = (category) =>
     donations.filter((donation) => donation.category === category);
-
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -129,11 +131,11 @@ function DonationsList() {
                 name="category"
                 value={newDonation.category}
                 onChange={handleInputChange}
+                required
               >
                 <option value="">--Select--</option>
-                <option value="looking_for">Looking For</option>
-                <option value="offers">Offers</option>
-                <option value="donated">Donated</option>
+                {isAdmin && <option value="looking_for">Looking For</option>}
+                {!isAdmin && <option value="offers">Offers</option>}
               </Form.Control>
             </Form.Group>
             <Form.Group>
@@ -141,18 +143,26 @@ function DonationsList() {
               <Form.Control
                 type="text"
                 name="type"
+                placeholder="Enter donation type"
                 value={newDonation.type}
                 onChange={handleInputChange}
+                required
               />
             </Form.Group>
             <Form.Group>
               <Form.Label>Amount</Form.Label>
-              <Form.Control
-                type="text"
-                name="amount"
-                value={newDonation.amount}
-                onChange={handleInputChange}
-              />
+              <div className="input-group">
+                <Form.Control
+                  type="number"
+                  name="amount"
+                  placeholder="Enter donation amount"
+                  value={newDonation.amount}
+                  onChange={handleInputChange}
+                  required
+                  className="form-control"
+                />
+                <span className="input-group-text">€</span>
+              </div>
             </Form.Group>
             <Form.Group>
               <Form.Label>Description</Form.Label>
@@ -160,6 +170,7 @@ function DonationsList() {
                 as="textarea"
                 rows={3}
                 name="description"
+                placeholder="Enter donation description"
                 value={newDonation.description}
                 onChange={handleInputChange}
               />
