@@ -14,11 +14,18 @@ function DonationsList() {
     description: "",
   });
 
-  useEffect(() => {
-    axios.get("http://localhost:3001/donations").then((response) => {
+  const load = async () => {
+    try {
+      const response = await axios.get("http://localhost:3001/donations");
       setDonations(response.data);
-    });
-  }, []);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  useEffect(() => {
+    load()
+  }, [newDonation]);
 
   const handleCloseModal = () => setShowModal(false);
   const handleShowModal = () => setShowModal(true);
@@ -30,22 +37,26 @@ function DonationsList() {
     });
   };
 
- 
- const handleMarkAsDonated = (donationId) => {
-    axios
-      .patch(`http://localhost:3001/donations/${donationId}`, {
-        category: "donated",
-      })
-      .then(() => {
-        const updatedDonations = donations.map((donation) => {
-          if (donation.id === donationId) {
-            return { ...donation, category: "donated" };
-          }
-          return donation;
-        });
-        setDonations(updatedDonations);
-      });
+  const changeCategory = async (id, category) => {
+    try {
+      const response = await axios.patch(`http://localhost:3001/donations/${id}`, { category });
+      if (response.status === 200) {
+        load(); // assuming there's a load function that reloads the donations list
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
+  
+  const handleMarkAsDonated = (donationId) => {
+    changeCategory(donationId, "donated");
+  };
+  
+  const handleOnRepeat = (donationId) => {
+    changeCategory(donationId, "looking_for");
+  };
+  
+  
 
   const handleDelete = (donationId) => {
     axios.delete(`http://localhost:3001/donations/${donationId}`).then(() => {
@@ -55,6 +66,8 @@ function DonationsList() {
       setDonations(updatedDonations);
     });
   };
+
+  
 
   const donationsByCategory = (category) =>
     donations.filter((donation) => donation.category === category);
@@ -100,6 +113,7 @@ function DonationsList() {
         donations={donationsByCategory("donated")}
         onMarkAsDonated={handleMarkAsDonated}
         onDelete={handleDelete}
+        onRepeat={handleOnRepeat}
       />
 
       <Modal show={showModal} onHide={handleCloseModal}>

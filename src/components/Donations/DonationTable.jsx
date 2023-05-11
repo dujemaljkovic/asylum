@@ -2,7 +2,7 @@ import React from "react";
 import { Table, Button } from "react-bootstrap";
 
 function DonationTable(props) {
-  const { donations, onMarkAsDonated, onDelete } = props;
+  const { donations, onMarkAsDonated, onDelete, onRepeat } = props;
 
   return (
     <Table striped bordered hover>
@@ -20,21 +20,40 @@ function DonationTable(props) {
             <td>{donation.type}</td>
             <td>{donation.amount}</td>
             <td>{donation.description}</td>
-            {donation.category === "looking_for" && (
-              <td>
-                {donation.category !== "donated" && (
+            <td>
+              {donation.category === "looking_for" && (
+                <>
                   <Button
                     variant="success"
                     onClick={() => onMarkAsDonated(donation.id)}
                   >
                     Mark as Donated
                   </Button>
-                )}
-                <Button variant="danger" onClick={() => onDelete(donation.id)}>
-                  Delete
-                </Button>
-              </td>
-            )}
+                  <Button
+                    variant="danger"
+                    onClick={() => onDelete(donation.id)}
+                  >
+                    Delete
+                  </Button>
+                </>
+              )}
+              {donation.category === "donated" && (
+                <>
+                  <Button
+                    variant="primary"
+                    onClick={() => onRepeat(donation)}
+                  >
+                    Repeat
+                  </Button>
+                  <Button
+                    variant="danger"
+                    onClick={() => onDelete(donation.id)}
+                  >
+                    Delete
+                  </Button>
+                </>
+              )}
+            </td>
           </tr>
         ))}
       </tbody>

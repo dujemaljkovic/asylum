@@ -17,81 +17,25 @@
   ],
   "donations": [
     {
+      "id": 2,
       "category": "offers",
+      "type": "vxcvx",
+      "amount": "",
+      "description": ""
+    },
+    {
+      "category": "donated",
       "type": "T-Shirt",
       "amount": "3",
-      "description": "dasd",
-      "id": "7WwcYiF"
+      "description": "ew",
+      "id": 3
     },
     {
+      "id": 5,
       "category": "donated",
       "type": "T-Shirt",
-      "amount": "23",
-      "description": "adasda",
-      "id": "dXC-3mU"
-    },
-    {
-      "category": "donated",
-      "type": "vxcvx",
-      "amount": "25",
-      "description": "dedeeedd",
-      "id": "RogmHFT"
-    },
-    {
-      "category": "offers",
-      "type": "offers",
-      "amount": "23",
-      "description": "offers",
-      "id": "f1efNaA"
-    },
-    {
-      "category": "donated",
-      "type": "T-Shirt",
-      "amount": "25",
-      "description": "donated",
-      "id": "wk9Qz3U"
-    },
-    {
-      "category": "donated",
-      "type": "T-Shirt",
-      "amount": "23",
-      "description": "dasda",
-      "id": "nS410fA"
-    },
-    {
-      "category": "offers",
-      "type": "gfdfgd",
-      "amount": "gdfgd",
-      "description": "gdf",
-      "id": "EsNwFUq"
-    },
-    {
-      "id": "15zSleu",
-      "category": "donated",
-      "type": "T-Shirt",
-      "amount": "25",
-      "description": "dasdasd"
-    },
-    {
-      "id": "iOPtSf3",
-      "category": "donated",
-      "type": "T-Shirt",
-      "amount": "23",
-      "description": "dddd"
-    },
-    {
-      "id": "_cbiCBW",
-      "category": "looking_for",
-      "type": "T-Shirt",
-      "amount": "5",
-      "description": "asda"
-    },
-    {
-      "id": "1lqAbnW",
-      "category": "looking_for",
-      "type": "T-Shirt",
-      "amount": "23",
-      "description": "adasd"
+      "amount": "dasdas",
+      "description": "dasda"
     }
   ],
   "animals": [
