@@ -67,18 +67,6 @@ function Notifications() {
       });
   };
 
-  const handleUpdateNotification = (id, updatedNotification) => {
-    axios
-      .put(`http://localhost:3001/announcements/${id}`, updatedNotification)
-      .then((response) => {
-        setNotifications((prevState) =>
-          prevState.map((notification) =>
-            notification.id === id ? response.data : notification
-          )
-        );
-      });
-  };
-
   const handleDeleteNotification = (id) => {
     axios.delete(`http://localhost:3001/announcements/${id}`).then(() => {
       setNotifications((prevState) =>
